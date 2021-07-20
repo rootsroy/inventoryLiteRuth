@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const typesRoutes = require('./typeroutes');
-const itemsRoutes = require('./itemroutes');
-const tagRoutes = require('./tagroutes');
+const typeRoutes = require('./type-routes');
+const itemRoutes = require('./item-routes');
+const tagRoutes = require('./tag-routes');
 
 
 //Url...
-router.use('/types', typesRoutes);
-router.use('/items', itemsRoutes);
+router.use('/types', typeRoutes);
+router.use('/items', itemRoutes);
 router.use('/tags', tagRoutes);
 
 module.exports = router;
