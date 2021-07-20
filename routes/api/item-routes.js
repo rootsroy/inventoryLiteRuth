@@ -10,12 +10,14 @@ router.get('/',async(req, res) => {
   try{
     const itemsData = await Item.findAll({
       attributes: ['id','item_name','price','stock'],
-      include:[{model:Type,
+      include:[
+      { model:Type,
         attributes:['type_name'],
       },
       { model:Tag,through:ItemTag,
         attributes:['tag_name'],
-      }],
+      }
+    ],
     });
     res.status(200).json(itemsData);
   } catch (err) {
@@ -51,10 +53,11 @@ router.get('/:id',async(req, res) => {
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
-      item_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      tagIds: [1, 2, 3, 4]
+      "item_name": "Shark Tank",
+      "price": 20.00,
+      "stock": 3,
+			"type_id": 1,
+      "tagIds": [1]
     }
   */
   Item.create(req.body)
