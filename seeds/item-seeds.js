@@ -12,3 +12,5 @@ const itemData = [
 const seedItems = () => Item.bulkCreate(itemData);
 
 module.exports = seedItems;
+
+//hello
