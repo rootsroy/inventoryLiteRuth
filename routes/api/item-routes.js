@@ -1,126 +1,126 @@
 const router = require('express').Router();
-const { Product, Category, Tag, ProductTag } = require('../../models');
+const { Item, Type, Tag, ItemTag } = require('../../models');
 
-// The `/api/products` endpoint
+// The `/api/Items` endpoint
 
-// get all products
+// get all Items
 router.get('/',async(req, res) => {
-  // find all products
-  // be sure to include its associated Category and Tag data
+  // find all Items
+  // be sure to include its associated Type and Tag data
   try{
-    const productsData = await Product.findAll({
-      attributes: ['id','product_name','price','stock'],
-      include:[{model:Category,
-        attributes:['category_name'],
+    const itemsData = await Item.findAll({
+      attributes: ['id','item_name','price','stock'],
+      include:[{model:Type,
+        attributes:['type_name'],
       },
-      { model:Tag,through:ProductTag,
+      { model:Tag,through:ItemTag,
         attributes:['tag_name'],
       }],
     });
-    res.status(200).json(productsData);
+    res.status(200).json(itemsData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// get one product
+// get one Item
 router.get('/:id',async(req, res) => {
-  // find a single product by its `id`
-  // be sure to include its associated Category and Tag data
+  // find a single Item by its `id`
+  // be sure to include its associated Type and Tag data
   try {
-    const productsData = await Product.findByPk(req.params.id, {
-      attributes: ['id','product_name','price','stock'],
-      include: [{ model: Category,
-        attributes:['category_name'],
+    const itemsData = await Item.findByPk(req.params.id, {
+      attributes: ['id','item_name','price','stock'],
+      include: [{ model: Type,
+        attributes:['type_name'],
       },
-      { model: Tag, through: ProductTag,
+      { model: Tag, through: ItemTag,
         attributes:['tag_name'],
       }],
     });
-    if (!productsData) {
-      res.status(404).json({message: 'No product here!'});
+    if (!itemsData) {
+      res.status(404).json({message: 'No Item here!'});
       return;
     }
-    res.status(200).json(productsData);
+    res.status(200).json(itemsData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// create new product
+// create new Item
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
-      product_name: "Basketball",
+      item_name: "Basketball",
       price: 200.00,
       stock: 3,
       tagIds: [1, 2, 3, 4]
     }
   */
-  Product.create(req.body)
-    .then((product) => {
-      // if there's product tags, we need to create pairings to bulk create in the ProductTag model
+  Item.create(req.body)
+    .then((item) => {
+      // if there's item tags, we need to create pairings to bulk create in the itemTag model
       if (req.body.tagIds.length) {
-        const productTagIdArr = req.body.tagIds.map((tag_id) => {
+        const itemTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
-            product_id: product.id,
+            item_id: item.id,
             tag_id,
           };
         });
-        return ProductTag.bulkCreate(productTagIdArr);
+        return ItemTag.bulkCreate(itemTagIdArr);
       }
-      // if no product tags, just respond
-      res.status(200).json(product);
+      // if no Item tags, just respond
+      res.status(200).json(item);
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
+    .then((itemTagIds) => res.status(200).json(itemTagIds))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
     });
 });
 
-// update product
+// update Item
 router.put('/:id', (req, res) => {
-  // update product data
-  Product.update(req.body, {
+  // update Item data
+  Item.update(req.body, {
     where: {
       id: req.params.id,
     },
   })
-    .then((product) => {
-      // find all associated tags from ProductTag
-      return ProductTag.findAll({ where: {
-         product_id: req.params.id 
+    .then((item) => {
+      // find all associated tags from ItemTag
+      return ItemTag.findAll({ where: {
+         item_id: req.params.id 
         } 
       });
     })
-    .then((productTags) => {
+    .then((itemTags) => {
       // get list of current tag_ids
-      const productTagIds = productTags.map(({ tag_id }) => tag_id);
+      const itemTagIds = itemTags.map(({ tag_id }) => tag_id);
       // create filtered list of new tag_ids
-      const newProductTags = req.body.tagIds
-        .filter((tag_id) => !productTagIds.includes(tag_id))
+      const newItemTags = req.body.tagIds
+        .filter((tag_id) => !itemTagIds.includes(tag_id))
         .map((tag_id) => {
           return {
-            product_id: req.params.id,
+            item_id: req.params.id,
             tag_id,
           };
         });
       // figure out which ones to remove
-      const productTagsToRemove = productTags
+      const itemTagsToRemove = itemTags
         .filter(({ tag_id }) => !req.body.tagIds.includes(tag_id))
         .map(({ id }) => id);
 
       // run both actions
       return Promise.all([
-        ProductTag.destroy({ where: {
-           id: productTagsToRemove 
+        ItemTag.destroy({ where: {
+           id: itemTagsToRemove 
           } 
         }),
-        ProductTag.bulkCreate(newProductTags),
+        ItemTag.bulkCreate(newItemTags),
       ]);
     })
-    .then((updatedProductTags) => res.json(updatedProductTags))
+    .then((updatedItemTags) => res.json(updatedItemTags))
     .catch((err) => {
       // console.log(err);
       res.status(400).json(err);
@@ -128,18 +128,18 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  // delete one product by its `id` value
+  // delete one Item by its `id` value
   try {
-    const productsData = await Product.destroy({
+    const itemsData = await Item.destroy({
       where: {
          id: req.params.id 
         }
     });
-    if (!productsData) {
-      res.status(404).json({message: 'No product here!'});
+    if (!itemsData) {
+      res.status(404).json({message: 'No Item here!'});
       return;
     }
-    res.status(200).json(productsData);
+    res.status(200).json(itemsData);
   } catch (err) {
     res.status(500).json(err);
   }
