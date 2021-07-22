@@ -1,7 +1,7 @@
 {
-  "name": "inventorylite",
+  "name": "user-model",
   "version": "1.0.0",
-  "description": "",
+  "description": "User-authentication",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/Rumtikitum/InventoryLite.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "diana",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Rumtikitum/InventoryLite/issues"
