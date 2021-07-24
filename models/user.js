@@ -1,6 +1,7 @@
+// import important parts of sequelize library
 const { Model, DataTypes } = require('sequelize');
+// import our database connection from config.js
 const sequelize = require('../config/connection');
-
 // create our User model
 class User extends Model {}
 
@@ -49,7 +50,7 @@ User.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelNamer: 'user'
+      modelName: 'user'
   }
 );
 

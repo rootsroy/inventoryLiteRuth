@@ -38,4 +38,5 @@ module.exports = {
   Type,
   Tag,
   ItemTag,
+  User,
 };
