@@ -32,16 +32,16 @@ User.init(
         // if allowNull is set to false, we can run data through validators before creating table
          validate:{
              isEmail: true
-         }
-  },
-  // define a password column
-  password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-          //this means the password must be at least 4 characters
-          len: [4]
-      }
+            }
+            },
+    // define a password column
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            //this means the password must be at least 4 characters
+            len: [4]
+        }
     }
   },
   {
