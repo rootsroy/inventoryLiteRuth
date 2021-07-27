@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const userRoutes = require('/user-routes.js');
+const userRoutes = require('./user-routes');
 const typeRoutes = require('./type-routes');
 const itemRoutes = require('./item-routes');
 const tagRoutes = require('./tag-routes');
