@@ -1,4 +1,4 @@
-//create connecction to our database, pass Mysql info for username + pw 
+//create connection to our database, pass Mysql info for username + pw 
 const Sequelize= require('sequelize');
 require ('dotenv').config();
 //create connection to our DB_NAME
