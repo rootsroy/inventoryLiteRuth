@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body class="flex-column min-100-vh">
+      <header class="hero">
+          <nav class="nav">
+              <ul>
+                  <li>
+                      <a href="/">HOME</a>
+                      <a href="/">LOG OUT</a>
+                  </li>
+              </ul>
+              </nav>
+    <div
+      id="forecast"
+      class="row justify-content-center p-3 mb-2 bg-primary text-white"
+    >
+      <h1>FULLYSTOCK</h1>
+    </div>
+
+    <section class="card hide" id="create-post-card">
+      <div class="card-header"> <fieldset>Filter by:</fieldset></div>
+      <div class="card-body">
+        <form class="new-post-form">
+          <div>
+            <label for="post-title" class="form-label">TYPE</label>
+            <input
+              class="form-input"
+              id="post-title"
+              type="text"
+              name="post-title"
+            />
+          </div>
+          <div>
+            <label for="post-content" class="form-label">TAG</label>
+            <textarea
+              class="form-textarea"
+              id="post-content"
+              name="post-content"
+            ></textarea>
+          </div>
+          <button  id="add-post-btn">Search</button>
+        </form>
+      </div>
+    </section>
+    <div class="center">
+      <button id="add-post-btn">Add Product</button>
+    </div>
+  </body>
+</html>
+<script src="/javascript/add-post.js"></script>
