@@ -9,56 +9,75 @@
 
   <div
     id="forecast"
-    class="row justify-content-center p-3 mb-2 bg-primary text-white"
+    class="row justify-content-center p-3 mb-2 bg-secondary text-white"
   >
     <h1>PRODUCT EDITOR</h1>
   </div>
 
   <div class="container">
+    
     <div class="row">
-        <button type="button" class="btn btn-danger">CANCEL</button>
-        <button type="button" class="btn btn-success">Success</button>
-
-
+      <div class="card" style="width: 70rem">
+        <div class="card-body">
+          
+          <button  class= "text-white"><a href="/home">CANCEL</a></button>
+          <button  class= "text-white"><a href="/home">SAVE</a></button>
+          
+        <!-- <button type="button" class="btn btn-danger">CANCEL</button>
+        <button type="button" class="btn btn-success">SAVE</button> -->
+      </div>
+      </div>
+ 
 
     <div class="row">
       <div class="card" style="width: 70rem">
-         <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action">Name:</a>
-            <a href="#" class="list-group-item list-group-item-action">Price:</a>
-            <a href="#" class="list-group-item list-group-item-action">Id:</a>
-         </div>
+        <div class="card-body">
+          <h5 class="card-title">INFO</h5>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Name:</span>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Price:</span>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">ID:</span>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        </div>
       </div>
     </div>
 
     
         <div class="row">
           <div class="card" style="width: 70rem">
-             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action"><span class="badge rounded-pill bg-primary">TYPE</span></a>
-                <a href="#" class="list-group-item list-group-item-action"><span class="badge rounded-pill bg-primary">TYPE</span></a>
-                <a href="#" class="list-group-item list-group-item-action"><span class="badge rounded-pill bg-primary">TYPE</span></a>
-             </div>
+            <div class="card-body">
+              <h5 class="card-title">TYPE</h5>
+
+              <span class="badge bg-light text-dark">Clothing</span>
+              <span class="badge bg-primary text-dark">Tech</span>
+              <span class="badge bg-light text-dark">Home Decor</span>
+            </div>
           </div>
         </div>
 
 
-        
-            <div class="row">
-              <div class="card" style="width: 70rem">
-                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action"><span class="badge rounded-pill bg-info text-dark">TAG</span></a>
-                    <a href="#" class="list-group-item list-group-item-action"><span class="badge rounded-pill bg-info text-dark">TAG</span></a>
-                    <a href="#" class="list-group-item list-group-item-action"><span class="badge rounded-pill bg-info text-dark">TAG</span></a>
-                 </div>
-              </div>
+        <div class="row">
+          <div class="card" style="width: 70rem">
+            <div class="card-body">
+              <h5 class="card-title">TAG</h5>
+
+              <span class="badge rounded-pill bg-light text-dark">color</span>
+              <span class="badge rounded-pill bg-light text-dark">size</span>
+              <span class="badge rounded-pill bg-primary text-white">new</span>
+              <span class="badge rounded-pill bg-light text-dark">handmade</span>
+              <span class="badge rounded-pill bg-light text-dark">sport</span>
+              <span class="badge rounded-pill bg-light text-dark">cars</span>
+              <span class="badge rounded-pill bg-light text-dark">electric</span>
+
+              
             </div>
-        
-    
-
-
-
-
-
-
+          </div>
+        </div>
 </html>
