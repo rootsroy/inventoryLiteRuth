@@ -4,52 +4,141 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
-    <link href="style.css" rel="stylesheet" />
+    <link href="/stylesheets/style.css" rel="stylesheet" />
   </head>
   <body class="flex-column min-100-vh">
-      <header class="hero">
-          <nav class="nav">
-              <ul>
-                  <li>
-                      <a href="/">HOME</a>
-                      <a href="/">LOG OUT</a>
-                  </li>
-              </ul>
-              </nav>
+    <header class="hero"></header>
     <div
       id="forecast"
-      class="row justify-content-center p-3 mb-2 bg-primary text-white"
+      class="row justify-content-center p-3 mb-2 bg-secondary text-white"
     >
       <h1>FULLYSTOCK</h1>
     </div>
 
-    <section class="card hide" id="create-post-card">
-      <div class="card-header"> <fieldset>Filter by:</fieldset></div>
-      <div class="card-body">
-        <form class="new-post-form">
-          <div>
-            <label for="post-title" class="form-label">TYPE</label>
-            <input
-              class="form-input"
-              id="post-title"
-              type="text"
-              name="post-title"
-            />
+    <div class="container">
+      <div class="row m-4">
+        
+            <button type="button" class="btn btn-success center">
+              <a href= "/product">
+               Add New Product
+
+              </a>
+            </button>
+       
+        </div>
+
+        <div class="row">
+          <div class="card" style="width: 70rem">
+            <div class="card-body">
+              <h6 class="card-title">Select type and tags</h6>
+            </div>
           </div>
-          <div>
-            <label for="post-content" class="form-label">TAG</label>
-            <textarea
-              class="form-textarea"
-              id="post-content"
-              name="post-content"
-            ></textarea>
+        </div>
+
+        <div class="row">
+          <div class="card" style="width: 70rem">
+            <div class="card-body">
+              <h5 class="card-title">TYPE</h5>
+
+              <span class="badge bg-light text-dark">Clothing</span>
+              <span class="badge bg-primary text-dark">Tech</span>
+              <span class="badge bg-light text-dark">Home Decor</span>
+            </div>
           </div>
-          <button  id="add-post-btn">Search</button>
-        </form>
+        </div>
+
+        <div class="row">
+          <div class="card" style="width: 70rem">
+            <div class="card-body">
+              <h5 class="card-title">TAG</h5>
+
+              <span class="badge rounded-pill bg-light text-dark">color</span>
+              <span class="badge rounded-pill bg-light text-dark">size</span>
+              <span class="badge rounded-pill bg-primary text-white">new</span>
+              <span class="badge rounded-pill bg-light text-dark"
+                >handmade</span
+              >
+              <span class="badge rounded-pill bg-light text-dark">sport</span>
+              <span class="badge rounded-pill bg-light text-dark">cars</span>
+              <span class="badge rounded-pill bg-light text-dark"
+                >electric</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="card" style="width: 70rem">
+            <div class="card-body">
+              <h6 class="card-title">Results</h6>
+            </div>
+          </div>
+        </div>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Type</th>
+              <th scope="col">Tag</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Shirt</td>
+              <td>$108</td>
+              <td>Clothing</td>
+              <td>Fashion</td>
+              <td>
+                <button type="button" class="btn btn-success">+</button
+                ><a> 10 </a
+                ><button type="button" class="btn btn-warning">-</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button  class= "btn btn-warning"><a href="/home">Edit</a></button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Iphone Pro</td>
+              <td>$999</td>
+              <td>Tech</td>
+              <td>Mac</td>
+              <td>
+                <button type="button" class="btn btn-success">+</button
+                ><a> 10 </a
+                ><button type="button" class="btn btn-warning">-</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger">Delete</button
+                ><button  class= "btn btn-warning"><a href="/home">Edit</a></button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Metal chair</td>
+              <td>$458</td>
+              <td>Furniture</td>
+              <td>Home Decor</td>
+              <td>
+                <button type="button" class="btn btn-success">+</button
+                ><a> 10 </a
+                ><button type="button" class="btn btn-warning">-</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger">Delete</button
+                ><button  class= "btn btn-warning"><a href="/home">Edit</a></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </section>
-    <div class="center">
-      <button id="add-post-btn">Add Product</button>
     </div>
   </body>
 </html>
