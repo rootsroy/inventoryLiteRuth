@@ -4,11 +4,11 @@ const Item = require("../../models/Item");
 const Type = require("../../models/Type");
 
 router.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../public/login.html"));
+  res.render("login");
 });
 
 router.get("/signup", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../public/signup.html"));
+  res.render("signup");
 });
 
 router.get("/", (req, res) => {

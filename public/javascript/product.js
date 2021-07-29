@@ -1,11 +1,24 @@
+$(document).ready(function () {
+  $("#productConfirm").click((event) => {
+    let itemId = $("#itemId").val();
+    console.log("itemId=" + itemId);
+    if (itemId == undefined || itemId.length <= 0) {
+      createProduct();
+    } else {
+      updateProduct(itemId);
+    }
+  });
+});
+
 let goHome = () => {
   document.location.href = "/";
 };
-let createProduct = (product) => {
-  let name = $("itemName");
-  let price = $("itemPrice");
-  let stock = $("itemStock");
 
+let createProduct = () => {
+  let name = $("#itemName").val();
+  let price = $("#itemPrice").val();
+  let stock = $("#itemStock").val();
+  console.log("adada!!!");
   fetch(`/api/items`, {
     method: "POST",
     body: JSON.stringify({
@@ -15,21 +28,29 @@ let createProduct = (product) => {
     }),
     headers: { "Content-Type": "application/json" },
   })
-    .then((response) => response.json())
+    // .then((response) => response.json())
+    // .then((response) => console.log(response))
     .then(goHome);
 };
 
 // update
-let updateProduct = (product) => {
-  fetch(`/api/items`, {
+let updateProduct = (productId) => {
+  let name = $("#itemName").val();
+  let price = $("#itemPrice").val();
+  let stock = $("#itemStock").val();
+  console.log("adada!!!");
+  fetch(`/api/items/${productId}`, {
     method: "PUT",
     body: JSON.stringify({
-      title,
-      content,
+      id: productId,
+      item_name: name,
+      price: price,
+      stock: stock,
     }),
     headers: { "Content-Type": "application/json" },
   })
-    .then((response) => response.json())
+    // .then((response) => response.json())
+    // .then((response) => console.log(response))
     .then(goHome);
 };
 

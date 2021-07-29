@@ -1,23 +1,19 @@
-const router = require('express').Router();
-const { Item, Type, Tag, ItemTag } = require('../../models');
+const router = require("express").Router();
+const { Item, Type, Tag, ItemTag } = require("../../models");
 
 // The `/api/Items` endpoint
 
 // get all Items
-router.get('/',async(req, res) => {
+router.get("/", async (req, res) => {
   // find all Items
   // be sure to include its associated Type and Tag data
-  try{
+  try {
     const itemsData = await Item.findAll({
-      attributes: ['id','item_name','price','stock'],
-      include:[
-      { model:Type,
-        attributes:['type_name'],
-      },
-      { model:Tag,through:ItemTag,
-        attributes:['tag_name'],
-      }
-    ],
+      attributes: ["id", "item_name", "price", "stock"],
+      include: [
+        { model: Type, attributes: ["type_name"] },
+        { model: Tag, through: ItemTag, attributes: ["tag_name"] },
+      ],
     });
     res.status(200).json(itemsData);
   } catch (err) {
@@ -26,21 +22,19 @@ router.get('/',async(req, res) => {
 });
 
 // get one Item
-router.get('/:id',async(req, res) => {
+router.get("/:id", async (req, res) => {
   // find a single Item by its `id`
   // be sure to include its associated Type and Tag data
   try {
     const itemsData = await Item.findByPk(req.params.id, {
-      attributes: ['id','item_name','price','stock'],
-      include: [{ model: Type,
-        attributes:['type_name'],
-      },
-      { model: Tag, through: ItemTag,
-        attributes:['tag_name'],
-      }],
+      attributes: ["id", "item_name", "price", "stock"],
+      include: [
+        { model: Type, attributes: ["type_name"] },
+        { model: Tag, through: ItemTag, attributes: ["tag_name"] },
+      ],
     });
     if (!itemsData) {
-      res.status(404).json({message: 'No Item here!'});
+      res.status(404).json({ message: "No Item here!" });
       return;
     }
     res.status(200).json(itemsData);
@@ -50,7 +44,7 @@ router.get('/:id',async(req, res) => {
 });
 
 // create new Item
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   /* req.body should look like this...
     {
       "item_name": "Shark Tank",
@@ -63,7 +57,7 @@ router.post('/', (req, res) => {
   Item.create(req.body)
     .then((item) => {
       // if there's item tags, we need to create pairings to bulk create in the itemTag model
-      if (req.body.tagIds.length) {
+      if (req.body.tagIds && req.body.tagIds.length) {
         const itemTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
             item_id: item.id,
@@ -83,8 +77,10 @@ router.post('/', (req, res) => {
 });
 
 // update Item
-router.put('/:id', (req, res) => {
+router.put("/:id", (req, res) => {
   // update Item data
+  console.log("eq.params.id api = " + req.params.id);
+
   Item.update(req.body, {
     where: {
       id: req.params.id,
@@ -92,9 +88,10 @@ router.put('/:id', (req, res) => {
   })
     .then((item) => {
       // find all associated tags from ItemTag
-      return ItemTag.findAll({ where: {
-         item_id: req.params.id 
-        } 
+      return ItemTag.findAll({
+        where: {
+          item_id: req.params.id,
+        },
       });
     })
     .then((itemTags) => {
@@ -116,9 +113,10 @@ router.put('/:id', (req, res) => {
 
       // run both actions
       return Promise.all([
-        ItemTag.destroy({ where: {
-           id: itemTagsToRemove 
-          } 
+        ItemTag.destroy({
+          where: {
+            id: itemTagsToRemove,
+          },
         }),
         ItemTag.bulkCreate(newItemTags),
       ]);
@@ -130,16 +128,16 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   // delete one Item by its `id` value
   try {
     const itemsData = await Item.destroy({
       where: {
-         id: req.params.id 
-        }
+        id: req.params.id,
+      },
     });
     if (!itemsData) {
-      res.status(404).json({message: 'No Item here!'});
+      res.status(404).json({ message: "No Item here!" });
       return;
     }
     res.status(200).json(itemsData);
