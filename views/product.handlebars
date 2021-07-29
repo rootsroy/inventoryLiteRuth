@@ -1,27 +1,11 @@
-<html>
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link href="style.css" rel="stylesheet" />
-  </head>
-
-  <div
-    id="forecast"
-    class="row justify-content-center p-3 mb-2 bg-secondary text-white"
-  >
-    <h1>PRODUCT EDITOR</h1>
-  </div>
-
   <div class="container">
     
     <div class="row">
       <div class="card" style="width: 70rem">
         <div class="card-body">
           
-          <button  class= "text-white"><a href="/home">CANCEL</a></button>
-          <button  class= "text-white"><a href="/home">SAVE</a></button>
+          <button  class= "btn-danger text-white"><a href="/">CANCEL</a></button>
+          <button id="productConfirm" class= "btn-primary text-white">SAVE</button>
           
         <!-- <button type="button" class="btn btn-danger">CANCEL</button>
         <button type="button" class="btn btn-success">SAVE</button> -->
@@ -33,17 +17,21 @@
       <div class="card" style="width: 70rem">
         <div class="card-body">
           <h5 class="card-title">INFO</h5>
+        
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Name:</span>
-          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          <input id="itemName" type="text" class="form-control" placeholder="{{product.item_name}}" aria-label="{{product.item_name}}" aria-describedby="basic-addon1" value={{product.item_name}}>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">Price:</span>
-          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          <input id="itemPrice" type="text" class="form-control" placeholder="{{product.price}}" aria-label="{{product.price}}" aria-describedby="basic-addon1" value={{product.price}}>
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">ID:</span>
-          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          <span class="input-group-text" id="basic-addon1">Stock:</span>
+          <input id="itemStock" type="text" class="form-control" placeholder="{{product.stock}}" aria-label="{{product.stock}}" aria-describedby="basic-addon1" value={{product.stock}}>
+        </div>
+        <div class="input-group mb-3">
+          <input id="itemId" type="hidden" class="form-control" placeholder="{{product.id}}" aria-label="{{product.id}}" aria-describedby="basic-addon1" value={{product.id}}>
         </div>
         </div>
       </div>
@@ -79,5 +67,4 @@
               
             </div>
           </div>
-        </div>
-</html>
+
