@@ -10,6 +10,7 @@
             </button>
        
         </div>
+        
 
         <div class="row">
           <div class="card" style="width: 70rem">
@@ -72,15 +73,16 @@
             </tr>
           </thead>
           <tbody>
+            {{#each products}} {{@index}}: {{this}} 
             <tr>
-              <th scope="row">1</th>
-              <td>Shirt</td>
-              <td>$108</td>
-              <td>Clothing</td>
-              <td>Fashion</td>
+              <th scope="row">{{this.id}}</th>
+              <td>{{this.item_name}}</td>
+              <td>{{this.price}}</td>
+              <td>{{this.stock}}</td>
+              <td>{{this.id}}</td>
               <td>
                 <button type="button" class="btn btn-success">+</button
-                ><a> 10 </a
+                ><a> {{this.stock}} </a
                 ><button type="button" class="btn btn-warning">-</button>
               </td>
               <td>
@@ -88,38 +90,8 @@
                 <button  class= "btn btn-warning"><a href="/">Edit</a></button>
               </td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Iphone Pro</td>
-              <td>$999</td>
-              <td>Tech</td>
-              <td>Mac</td>
-              <td>
-                <button type="button" class="btn btn-success">+</button
-                ><a> 10 </a
-                ><button type="button" class="btn btn-warning">-</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-danger">Delete</button
-                ><button  class= "btn btn-warning"><a href="/">Edit</a></button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Metal chair</td>
-              <td>$458</td>
-              <td>Furniture</td>
-              <td>Home Decor</td>
-              <td>
-                <button type="button" class="btn btn-success">+</button
-                ><a> 10 </a
-                ><button type="button" class="btn btn-warning">-</button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-danger">Delete</button
-                ><button  class= "btn btn-warning"><a href="/">Edit</a></button>
-              </td>
-            </tr>
+            {{/each}}
+            
           </tbody>
         </table>
       </div>
