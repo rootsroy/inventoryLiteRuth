@@ -1,37 +1,37 @@
 // import models
-const Item = require('./Item');
-const Type = require('./Type');
-const Tag = require('./Tag');
-const ItemTag = require('./ItemTag');
-const User = require('./User');
+const Item = require("./Item");
+const Type = require("./Type");
+const Tag = require("./Tag");
+const ItemTag = require("./ItemTag");
+const User = require("./User");
 
 module.exports = { User };
 
 // Items belongsTo Type
 Item.belongsTo(Type, {
-  foreignKey: 'type_id',
+  foreignKey: "type_id",
 });
 
 // Types have many Items
 Type.hasMany(Item, {
-  foreignKey: 'type_id',
-})
+  foreignKey: "type_id",
+});
 
 // Items belongToMany Tags (through ItemTag)
 Item.belongsToMany(Tag, {
   through: {
     model: ItemTag,
-    unique: false
+    unique: false,
   },
-})
+});
 
 // Tags belongToMany Items (through ItemTag)
 Tag.belongsToMany(Item, {
   through: {
     model: ItemTag,
-    unique: false
-  }
-})
+    unique: false,
+  },
+});
 
 module.exports = {
   Item,
