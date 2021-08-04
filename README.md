@@ -27,6 +27,9 @@ For the initial implementation, here we can find the deployed application
 
 - [Initial implementation](https://inventoryliteruth.herokuapp.com/)
 
+![image](https://user-images.githubusercontent.com/15662657/128101710-3989ab76-4d6f-4af8-b865-558397671c9e.png)
+
+
 ## General Information
 
 - Provide general information about your project here.
