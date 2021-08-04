@@ -2,6 +2,7 @@
 
 > FullyStocked, is a simple inventory application that allows Users to Add, Delete, and Restock their inventory.
 
+> Live demo initial research [_here_](https://inventoryliteruth.herokuapp.com/)
 > Live demo [_here_](https://infinite-island-02975.herokuapp.com/)
 
 ## Table of Contents
@@ -21,7 +22,9 @@ This application was developed in two phases:
 - An initial implementation focused on the CRUD operations to support the ITEMS inventory.
 - A secondary implementation in the remaining aspects (types, tags, etc.)
 
-For the initial implementation, here we can find the deployed application [Initial implementation](https://inventoryliteruth.herokuapp.com/)
+For the initial implementation, here we can find the deployed application
+
+- [Initial implementation](https://inventoryliteruth.herokuapp.com/)
 
 ## General Information
 
